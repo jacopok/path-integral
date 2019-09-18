@@ -1,0 +1,74 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+In the previous lessons we introduced the Dirac representation, where we defined:
+\begin{align}
+    &\ket{\alpha t_0 t}=U(t-t_0)\ket{\alpha t_0}=e^{-\frac{iH(t-t_0)}{\hbar}}\ket{\alpha}=\sum_{a'} e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\ket{a'}\braket{a'}{a t_0}
+    &=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\ket{a'}=\sum c'_a(t)\ket{a'},\\
+    &\braket{\Bar{x'}}{a't_0 t}=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{\Bar{x'}}{a'},
+\end{align}
+such that $\psi(\Bar{x'},t)=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}u_{a'}(\Bar{x'})$.
+Than from Dirac completeness relation,
+
+\begin{align}
+c_{a'}(t_0)=\braket{a'}{\alpha t_0}=\int d^3x' \braket{a'}{\Bar{x'}}\braket{\Bar{x'}}{\alpha t_0},
+\end{align}
+
+and for this reason
+
+\begin{align}
+\braket{x''}{\alpha t_0 t}=\sum e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{x''}{a'}\int d^3x'\braket{a'}{x'}\braket{x'}{a t_0}
+=\int d^3x'\sum \braket{x''}{a'} \braket{a'}{x'}e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{x'}{a t_0}=\int d^3x' K \braket{x'}{a t_0}
+\end{align}
+where we defined the propagator $K$. We write otherwise $\psi(x'',t)=\int d^3x' K(x'', t, x', t_0)\psi(x', t_0)$, such that the propagator satisfies:
+
+\begin{itemize}
+    \item $K$ respects Schrodinger equation, since $i\hbar\braket{x'}{\Dot{\alpha t_0 t}}=\bra{x'}H\ket{\alpha t_0 t}$ and $\braket{x'}{a' t_0 t}=e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{x''}{a'}$
+    \item $\lim_{t\to t_0}K=\delta^3(x''-x')$, i.e. the evolution of a particle which was in $x'$ at $t=0$
+\end{itemize}
+\subsection{Free particle propagator}
+Now we want to obtain the propagator $K$ aforementioned for the particular case of a free particle hamiltonian. In the space of momenta we have
+\begin{align}
+&P\ket{p'}=p'\ket{p'}, \braket{x'}{p'}=\frac{e^{\frac{ip'x'}{\hbar}}}{\sqrt{2\pi\hbar}},
+&H\ket{p'}=\frac{p'^2}{2m}\ket{p'}.
+\end{align}
+In this case we have
+
+\begin{equation}
+K=\int dp'\braket{x''}{p'}\braket{p'}{x'}e^{-\frac{ip^2(t-t_0)}{\hbar 2m}}=\int_{-\infty}^{+\infty}dp'\frac{e^{\frac{i}{\hbar}\left(p'(x''-x')-\frac{p'^2}{2m}(t-t_0)\right)}}{2\pi\hbar}
+\end{equation}
+Considering that
+
+\begin{equation}
+\frac{i}{\hbar}\left(p'(x''-x')-\frac{p'^2}{2m}(t-t_0)\right)=-\frac{i(t-t_0)}{2m\hbar}\left(p'^2-\frac{2mp'(x''-x')}{t-t_0}\right)=-\frac{i(t-t_0)}{2m\hbar}\left(p'-\frac{m(x''-x')}{t-t_0}\right)^2+\frac{i(t-t_0)m^2(x''-x')^2}{4m^2\hbar^2}=-\frac{i(t-t_0)}{2m\hbar}\left(p'-\frac{m(x''-x')}{t-t_0}\right)^2+\frac{im(x''-x')^2}{2m\hbar(t-t_0)}.
+\end{equation}
+
+Now, defining the new variable $\xi=p'-\frac{m(x''-x')}{t-t_0}$, we finally obtain
+\begin{equation}
+K=\frac{e^{\frac{im(x''-x')^2}{2m\hbar}}}{2\pi\hbar}\int_{-\infty}^{+\infty}d\xi e^{-\frac{i(t-t_0)\xi^2}{2m\hbar}}=\frac{e^{\frac{im(x''-x')^2}{2m\hbar}}}{2\pi\hbar}\sqrt{\frac{2m\pi\hbar}{i(t-t_0)}}
+\end{equation}
+\subsection{Harmonic oscillator}
+In the same way we studied the free particle problem, we want to obtain the propagator for the harmonic oscillator, i.e. a single particle system under the evolution with the hamiltonian
+\begin{equation}
+H=\frac{p^2}{2m}+\frac{m\omega^2x^2}{2},
+\end{equation}
+where we know that defining the operator distruction $a=\sqrt{\frac{m\omega}{2\hbar}}\left(x+\frac{ip}{m\omega}\right)$, we obtain an explicit writing for the eigenvalues $E_N=\hbar\omega(N+\frac{1}{2})$ and the eigenfunctions respect the relations $\ket{n+1}=\frac{a^+}{\sqrt{n+1}\ket{n}}$, in such a way that
+\begin{equation}
+\bra{x'}a\ket{0}=\sqrt{\frac{m\omega}{2\hbar}}\bra{x'}\left(x+\frac{ip}{m\omega}\right)\ket{0}.
+\end{equation}
+It follows that $\left(x'+\frac{i}{m\omega}(-i\hbar\frac{d}{dx'})\right)\braket{x'}{0}$ and, defining $x_0=\sqrt{\frac{\hbar}{m\omega}}$, we have $\braket{x'}{0}=\eta e^{-\frac{x'^2}{2x_0^2}}$ with $\eta=\frac{1}{(x_0\pi)^{\frac{1}{4}}}$. In this case we obtain
+\begin{equation}
+\braket{x'}{n}=\frac{1}{\pi^{\frac{1}{4}}\sqrt{2^n n}}\frac{\left(x'-x^2_0\frac{d}{dx'}\right)^n}{x_0^{n+\frac{1}{2}}}e^{-\frac{x'^2}{2x_0^2}}=\frac{1}{\pi^{\frac{1}{4}}\sqrt{2^n n!}}H_n(y)e^{-\frac{x'^2}{2x_0^2}},
+\end{equation}
+where we defined $y=\frac{x'}{x_0}$, and the propagator
+\begin{equation}
+K=\sum_{n=0}^{\infty}\braket{x'}{n}\braket{n}{x''}e^{-i\omega(n+\frac{1}{2})(t-t_0)}=\frac{e^{-\frac{i\omega \delta t}{2}}}{\sqrt{\pi}x_0}e^{-\frac{1}{2}\left(\frac{x''^2}{x_0^2}+\frac{x'^2}{x_0^2}\right)}\sum\frac{e^{-i\omega\delta t n}}{2^n n!}H_n(\frac{x''}{x_0})H_n(\frac{x'}{x_0}).
+\end{equation}
+Now, considering that, for $\zeta=e^{-i\omega\delta t}$, $\xi=\frac{x''}{x_0}$ and $\eta=\frac{x'}{x_0}$
+\begin{equation}
+e^{-(\xi^2+\eta^2)}\sum\frac{\zeta^n}{2^n n!}H_n{\xi}H_n{\eta}=\frac{e^{-\frac{\xi^2+\eta^2-2\xi\eta\zeta}{1-\zeta^2}}}{\sqrt{i-\zeta^2}},
+\end{equation}
+we have
+\begin{equation}
+K=\frac{e^{-\frac{i\omega \delta t}{2}}}{\sqrt{\pi}x_0}e^{\frac{1}{2}(\xi^2+\eta^2)}\frac{e^{-\frac{\xi^2+\eta^2-2\xi\eta\zeta}{1-\zeta^2}}}{\sqrt{i-\zeta^2}}=\frac{e^{\left(-\frac{(\xi^2+\eta^2)e^{i\omega\delta t}-2\xi\eta}{e^{i\omega\delta t}-e^{-i\omega\delta t}}+\frac{\xi^2+\eta^2}{2}\right)}}{x_0\sqrt{2\pi i \sin(\omega\delta t)}}=\sqrt{\frac{m\omega}{2\pi i\hbar\sin(\omega\delta t)}}e^{-\frac{(\xi^2+\eta^2)(\cos(\omega\delta t)+i\sin(\omega\delta t))-2\xi\eta-is(\xi^2+\eta^2)}{2i\sin(\omega\delta t)}}=\sqrt{\frac{m\omega}{2\pi i\hbar\sin(\omega\delta t)}}e^{-\frac{(\xi^2+\eta^2)\cos(\omega\delta t)-2\xi\eta}{2i\sin(\omega\delta t)}}=\sqrt{\frac{m\omega}{2\pi i\hbar\sin(\omega(t-t_0))}}e^{\frac{im\omega\left(x''^2+x'^2\cos(\omega(t-t_0))-2x'x''\right)}{2\hbar\sin(\omega(t-t_0))}}
+\end{equation}
+\end{document}
