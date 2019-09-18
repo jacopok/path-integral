@@ -1,11 +1,24 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 In the previous lessons we introduced the Dirac representation, where we defined:
+%
+\begin{subequations}
 \begin{align}
-    &\ket{\alpha t_0 t}=U(t-t_0)\ket{\alpha t_0}=e^{-\frac{iH(t-t_0)}{\hbar}}\ket{\alpha}=\sum_{a'} e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\ket{a'}\braket{a'}{a t_0}
-    &=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\ket{a'}=\sum c'_a(t)\ket{a'},\\
-    &\braket{\Bar{x'}}{a't_0 t}=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{\Bar{x'}}{a'},
+    \ket{\alpha t_0 t}
+    &=U(t-t_0)\ket{\alpha t_0}  \\
+    &=e^{-\frac{iH(t-t_0)}{\hbar}}\ket{\alpha} \\
+    &=\sum_{a'} e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\ket{a'}\braket{a'}{a t_0} \\
+    &=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\ket{a'}  \\
+    &=\sum c'_a(t)\ket{a'}
 \end{align}
+\end{subequations}
+%
+and
+%
+\begin{equation}
+    \braket{\Bar{x'}}{a't_0 t}=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{\Bar{x'}}{a'}\,,
+\end{equation}
+
 such that $\psi(\Bar{x'},t)=\sum c_a'(t_0)e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}u_{a'}(\Bar{x'})$.
 Than from Dirac completeness relation,
 
@@ -15,10 +28,16 @@ c_{a'}(t_0)=\braket{a'}{\alpha t_0}=\int d^3x' \braket{a'}{\Bar{x'}}\braket{\Bar
 
 and for this reason
 
+
+\begin{subequations}
 \begin{align}
-\braket{x''}{\alpha t_0 t}=\sum e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{x''}{a'}\int d^3x'\braket{a'}{x'}\braket{x'}{a t_0}
-=\int d^3x'\sum \braket{x''}{a'} \braket{a'}{x'}e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{x'}{a t_0}=\int d^3x' K \braket{x'}{a t_0}
+    \braket{x''}{\alpha t_0 t}
+    &=\sum e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{x''}{a'}\int d^3x'\braket{a'}{x'}\braket{x'}{a t_0}  \\
+    &=\int d^3x'\sum \braket{x''}{a'} \braket{a'}{x'}e^{-\frac{iE_{a'}(t-t_0)}{\hbar}}\braket{x'}{a t_0} \\
+    &=\int d^3x' K \braket{x'}{a t_0}
 \end{align}
+\end{subequations}
+%
 where we defined the propagator $K$. We write otherwise $\psi(x'',t)=\int d^3x' K(x'', t, x', t_0)\psi(x', t_0)$, such that the propagator satisfies:
 
 \begin{itemize}
