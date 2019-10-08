@@ -45,6 +45,59 @@ which directly implies the Schrödinger equation
 
 \subsection{Time-independent Hamiltonians}
 
+We can Taylor-expand the evolution operator as such:
 
+\begin{subequations}
+\begin{align}
+  U(t, t_0) &= \exp(\frac{H (t-t_0)}{i \hbar} )  \\
+  &= \id + \frac{H (t-t_0)}{i \hbar} + \frac{1}{2} \frac{H^2 (t-t_0)^2}{(i \hbar^2)^2} + o(\abs{t-t_0}^2 )\,,
+\end{align}
+\end{subequations}
+%
+and also its derivative:
+%
+\begin{subequations}
+\begin{align}
+  \partial_t U(t, t_0) &= \frac{H}{i \hbar} + \frac{1}{2} \frac{H^2}{(i \hbar)^2} 2t + O(\abs{t-t_0}^2)   \\
+  &= \frac{HU}{i \hbar} \,,
+\end{align}
+\end{subequations}
+%
+which is consistent with the Schrödinger equation.
+
+Alternatively, we can look at the limit of infinitesimal time evolutions:
+
+\begin{equation}
+  \qty(\id + \frac{H}{i \hbar} \frac{t}{N})^N \xrightarrow{N\rightarrow\infty}
+ \exp( \frac{Ht}{i \hbar} )
+\end{equation}
+
+In general, continuous symmetries have representations in a Hilbert space: say we have the time translation symmetry \(P(\xi) t = t + \xi\); its representation is generally in the form \(\exp(-i \Omega t) \) for a self-adjoint \(\Omega\).
+
+The fact that the generator of the time-translation symmetry is the Hamiltonian: \(\Omega = H / \hbar\) is a postulate.
+
+\subsubsection{Time-dependent commuting Hamiltonians}
+
+We assume that \(H = H(t)\), but \([H(t_1), H(t_2)] = 0\) for any \(t_{1, 2}\).
+Then:
+%
+\begin{equation}
+  U(t, t_0) = \exp(\frac{1}{i \hbar} \int_{t_0}^t  H(\tau) \dd{\tau}) \,,
+\end{equation}
+%
+which can be proved like before, substituting \(Ht \rightarrow \int^t H(\tau) \dd{\tau}\).
+
+\subsubsection{Time-dependent non-commuting Hamiltonians}
+
+In general, if \([H(t_1), H(t_2)] \neq 0\), we have the following expression by Dyson:
+%
+\begin{equation}
+  U(t, t_0) = \id + \sum_N^{\infty}
+  \frac{1}{(i \hbar)^N} \int_{t_0}^{t}\dd{t_1} \int_{t_0}^{t_1}\dd{t_2} \dots
+  \int_{t_0}^{t_{n-1}} \dd{t_n} \pi_i H (t_i)\,.
+\end{equation}
+
+A concrete Hamiltonian for which we'd need this is something in the form \(H = - \mu \cdot B(t)\), where the magnetic field \(B(t)\) changes directions.
+Since \(\mu \cdot B \propto s \cdot B\) and the \(s_j\) do not commute, this does not commute with itself at different times.  
 
 \end{document}
