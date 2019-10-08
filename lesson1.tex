@@ -1,6 +1,50 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-    In lesson 1...
+\section{The axioms of time evolution}
+
+Let us consider the axioms of quantum mechanical time evolution:
+
+\begin{enumerate}
+    \item States are described by kets at some starting time \(t_0\): \(\ket{\alpha} = \ket{\alpha, t_0}\);
+    \item their time evolution is described by a linear operator \(U(t; t_0)\) as \(\ket{\alpha, t_0 ; t} = U(t, t_0) \ket{\alpha}\);
+    \item this time evolution obeys \(\lim_{t \rightarrow t_0} \ket{\alpha, t;t_0}  = \ket{\alpha; t_0} \). \label{item:identity-property}
+\end{enumerate}
+
+If we have an observable \(A\), we can express our states with respect to its  eigenbasis \(\ket{\alpha'} \):
+%
+\begin{equation}
+  \ket{\alpha, t_0} = \sum _{\alpha'} c_{\alpha'} (t_0) \ket{\alpha'}\,,
+\end{equation}
+ %
+and do the same for their evolved counterparts, with evolved coefficients \(c_{\alpha'}(t)\).
+If \([A, H]=0\) then \(\abs{c_{\alpha'}(t)} = \abs{c_{\alpha'}(t_0)} \), while in general this does not hold.
+
+We impose the normalization of kets: \(1 = \braket{\alpha}{\alpha} = \sum _{\alpha'} \abs{c_{\alpha'}(t)}^2 \) for all times. This directly implies that the linear operator \(U\) must be unitary: \(U^\dag U = \id\).
+
+Also, we impose the composition law: if \(t_2 \geq t_1 \geq t_0\), then \(U(t_2;t_0) \overset{!}{=} U(t_2;t_1) U(t_1;t_0)\).
+
+Condition \ref{item:identity-property} means that we can expand:
+%
+\begin{equation}
+  U(t_0 + \dd{t}, t_0) = \id + \frac{H \dd{t}}{i \hbar}
+\end{equation}
+%
+with some self-adjoint operator \(H\).
+Manipulating this, for a generic time \(t\) we get:
+%
+\begin{equation}
+  \dv{}{t} U(t;t_0) = \frac{HU}{i \hbar} \,,
+\end{equation}
+%
+which directly implies the Schrödinger equation
+%
+\begin{equation}
+  i \hbar \partial_t \ket{\alpha, t_0; t} = H \ket{\alpha, t_0; t}
+\end{equation}
+
+\subsection{Time-independent Hamiltonians}
+
+
 
 \end{document}
