@@ -1,0 +1,101 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Before the PI}
+
+\subsection{Schrödinger, Heisenberg \& interaction}
+
+We denote \(U = \exp(Ht/i \hbar) \), and similarly with \(H_0 \rightarrow U_0 \), \(V \rightarrow U_V\).
+
+\paragraph{Schrödinger}
+
+\begin{enumerate}
+    \item State kets are \(\ket{\psi (t)} = U \ket{\psi (t = 0)}  \);
+    \item observables are \(A(t) \equiv A(t=0)\);
+    \item base kets are defined by \(A \ket{a} = a \ket{a} \), therefore \(\ket{a(t)} \equiv \ket{a(t=0)} \).
+\end{enumerate}
+
+\paragraph{Heisenberg}
+
+\begin{enumerate}
+    \item State kets are \(\ket{\psi (t)} \equiv \ket{\psi (t=0)} \);
+    \item observables are \(A(t) = U ^\dag A(t=0) U \);
+    \item base kets are \(\ket{a(t)} = U ^\dag \ket{a(t=0)} \).
+\end{enumerate}
+    
+
+\paragraph{Interaction}
+
+We denote by a subscript \(S\) or \(I\) objects in the Schrödinger or interaction system. In the 
+
+\begin{enumerate}
+    \item State kets are defined as \(\ket{\psi (t)}_I = U_0 ^\dag \ket{\psi (t)}_S \);
+    \item observables are defined as \(A_I (t) = U_0 ^\dag A_S U_0 \);
+    \item as base kets we use eigenstates of \(H_0 \): \(H_0 \ket{n} = E_n \ket{n} \). These evolve like \(\ket{n(t)} = U_0 \ket{n(t= 0)} \).
+\end{enumerate}
+
+Then, we can generically write the evolution of a Schrödinger ket as 
+%
+\begin{equation}
+  \ket{\psi (t)}_S = 
+  \sum _{n}  c_n(t) \exp(E_n t / i \hbar) \ket{n}
+\,,
+\end{equation}
+%
+therefore the evolution of the interaction ket is 
+%
+\begin{equation}
+    \ket{\psi (t)}_I = 
+    U_0 ^\dag \ket{\psi (t)} _S = \sum _n c_n (t) \ket{n} 
+\,.
+\end{equation}
+
+We can write an equation for the evolution of the \(c_n(t)\): 
+%
+\begin{equation}
+  i \hbar \dot{c_n} (t) = \sum_m V_{nm} \exp(i \omega_{nm} t) c_m(t) 
+\,,
+\end{equation}
+%
+where \(\omega_{nm} = (E_n - E_m) / \hbar\) and \(V_{nm} = \bra{n} V \ket{m} \). This is a matrix equation for the coefficient vector. 
+
+\paragraph{Time-dep perturbations}
+
+If we define the interaction-picture evolution operator as \(\ket{\alpha, t}  = U_I (t) \ket{\alpha, 0} \) we have its evolution as \(i \hbar \partial_t U_I = V_I U_I\).
+
+For small times \(U_I \approx \mathbb{1}\), so we can integrate the Schrödinger equation: 
+%
+\begin{subequations}
+    \begin{align}
+        U_I &= \mathbb{1} + \frac{1}{i \hbar} \int_0^t V_I(t') U_I(t') \dd{t'}  \\
+        &= \mathbb{1} + \frac{1}{i \hbar}\int_0^t V_I(t')\qty(
+            \mathbb{1} + \frac{1}{i \hbar} \int_0^{t'} V_I(t'') U_I(t'') \dd{t''}
+        ) \dd{t'}  \\
+        &= \mathbb{1} + \frac{1}{i \hbar}\int_0^t V_I(t') \dd{t'} + \frac{1}{(i \hbar)^2} \int_0^t \int_0^{t'}V_I(t')V_I(t'') \dd{t'} \dd{t''} + o(V_I^2)
+\end{align}
+\,.
+\end{subequations}
+%
+
+Now, if we start on a base ket \(\ket{i} \), the evolution coefficients \(c_n(t)\) will be given by the matrix elements \(\bra{n} U_I (t) \ket{i} \).
+We can compute these to any order in \(V_I\), by taking the components of the previous equation and applying the following computation any time we have the components of \(V_I\): 
+%
+\begin{equation}
+  \bra{n} V_I \ket{i} = \bra{n} U_0 ^\dag V U_0 \ket{i} = \exp(i \omega_{ni} t) V_{ni} 
+\,,
+\end{equation}
+%
+since the \(\ket{n} \) are eigenstates of the unperturbed Hamiltonian. 
+
+\subsection{The propagator}
+
+If \(H \ket{\alpha '} = \alpha ' \ket{\alpha '} \), then the evolution operator can be decomposed as 
+%
+\begin{equation}
+  U (t) = \sum _{\alpha '} \exp(\frac{E_{\alpha '} t}{i \hbar}) \dyad{\alpha '}  
+\,.
+\end{equation}
+%
+
+
+\end{document}
