@@ -95,7 +95,81 @@ If \(H \ket{\alpha '} = \alpha ' \ket{\alpha '} \), then the evolution operator 
   U (t) = \sum _{\alpha '} \exp(\frac{E_{\alpha '} t}{i \hbar}) \dyad{\alpha '}  
 \,.
 \end{equation}
+
+This can be written in the position basis as a Green function by contracting with two position vectors: 
+%
+\begin{equation}
+  \bra{x'} U(t) \ket{x''} =
+  \sum _{\alpha '} \exp(\frac{E_{\alpha '} t}{i \hbar}) \braket{x'}{\alpha '} \braket{\alpha '}{x''} 
+  \overset{\text{def}}{=}  K(x', x''; t)
+\,,
+\end{equation}
+%
+and with this we can directly compute the evolution at a generic time: \(\psi (x'', t) =  \int \dd[3]{x'} K(x'', x'; t) \psi (x')\). It is effectively the transition amplitude: \(K = \braket{x'', t}{x', 0} \) when seen in the Heisenberg picture (since we are evolving a base ket).
+
+\begin{enumerate}
+    \item \(K(x', x'', t)\) satisfies the Schrödinger equation, since it is a sum of terms which do;
+    \item \(\lim_{t \rightarrow 0} K(x', x'', t) = \delta^3 (x', x'')\).
+\end{enumerate}
+
+\subsection{Some useful propagators}
+
+\paragraph{Free particle}
+
+We consider \(H = p^2/2m\); the momentum eigenstates are \(p \ket{p'} = p' \ket{p'} \), and they are also energy eigenstates with \(H \ket{p'}  = ((p')^2/2m) \ket{p'} \).
+
+We compute: 
+%
+\begin{equation}
+  K(x', x'', t) = \int \dd{p'} \braket{x''}{p'} \braket{p'}{x'} \exp(\frac{(p')^2 t}{i \hbar 2m }) 
+\,,
+\end{equation}
+%
+and recall that \(\braket{x}{p} = \exp(-px/ i \hbar) / \sqrt{2 \pi \hbar}  \). We simplify the exponent to get a Gaussian integral: it is known that
+%
+\begin{equation}
+  \int _{\mathbb{R}} \dd{x} \exp(- i \alpha x^2) = \sqrt{\frac{\pi}{i \alpha }} 
+\,,
+\end{equation}
+%
+therefore in the end we get: 
+%
+\begin{equation}
+  K(x', x'', t) = \frac{1}{2 \pi \hbar} \exp(\frac{im (x'' - x')^2}{2 \hbar t}) \sqrt{\frac{2 m \pi \hbar}{it}} 
+\,,
+\end{equation}
+%
+which for \(t \rightarrow 0\) is in the form
+\(\exp({(x' - x'')}^2/t) \sqrt{t} \rightarrow \delta (x''- x') \).
+
+\paragraph{Harmonic oscillator}
+
+We consider \(H = p^2/2m + m \omega^2 x^2 / 2\). It is known that the eigenfunctions are given by the Hermite polynomials: 
+%
+\begin{equation}
+  \braket{x'}{n} = \frac{1}{\pi^{1/4} \sqrt{2^{n} n!}} \frac{1}{x_0^{1/2}} H_n y \exp(-\frac{(x/x_0)^2}{2}) 
+\,,
+\end{equation}
+%
+where \(x_0 = \sqrt{\hbar / (m \omega )} \) (both masses and frequencies are inverse lengths in natural units!). We also know the eigenenergies, \(E_n = \hbar \omega (n+1/2)\). We can then compute away, to finally get: 
+%
+\begin{equation}
+  K = \sqrt{\frac{m \omega }{2 i \pi \hbar \sin(\omega t))}}
+  \exp(\frac{im \omega \qty(((x'')^2+(x')^2)\cos(\omega t)-2x'x'' )}{2 \hbar \sin(\omega t) })  
+\,.
+\end{equation}
 %
 
+\section{The Path Integral}
+
+We can time-slice the interval between a certain time \(0 = t_0\) and another time \(t = t_N\) in \(N\) parts. Then, evolving the system with a the propagator for each one, we get: 
+%
+\begin{equation}
+  K(x_N, x_0, t) = 
+  \int \qty(\prod _{i=1}^{N-1} \dd[]{x_i}) \qty(\prod_{i=0}^{N-1}\braket{x_{i+1}, t_{i+1}}{x_i, t_i})  
+\,.
+\end{equation}
+
+We call the time-slice \(\epsilon = t/N\). We will expand the in \(\epsilon \) up to first order the evolution operator \(\exp(H \epsilon /i \hbar) \).
 
 \end{document}
