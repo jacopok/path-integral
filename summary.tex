@@ -172,4 +172,126 @@ We can time-slice the interval between a certain time \(0 = t_0\) and another ti
 
 We call the time-slice \(\epsilon = t/N\). We will expand the in \(\epsilon \) up to first order the evolution operator \(\exp(H \epsilon /i \hbar) \).
 
+\dots
+
+\todo[inline]{Fill there}
+
+\subsection{Path integral of a quadratic Lagrangians}
+
+Let \(L(x,\dot{x})\) be a quadratic Lagrangian:
+\begin{equation}
+	L = a\dot{x}^2 + bx\dot{x} + cx^2 + d\dot{x} + ex + f
+\end{equation}
+
+The propagator for $L$, computed via path integral, is:
+\begin{align}
+K &= \int\DD{x} \exp(\frac{i}{\hbar}\int \dd{t} L) \\
+&= \int\DD{x} \exp(\frac{i}{\hbar}\int \dd{t} ( \underbrace{a\dot{x}^2 + bx\dot{x} + cx^2 + d\dot{x} + ex + f}_F) )
+\end{align}
+
+Let $x_c$ be the classical path; let's write $x = x_c + y$ and therefore $\DD{x} = \DD{y}$. Properly replacing $x$ and $\dot{x}$, the propagator can be written as:
+\begin{align}
+\begin{split}
+F &= a (\dot{x}_c^2+\dot{y}^2+2\dot{x}_c\dot{y}) + b(x_c\dot{x}_c+x_c\dot{y}+y\dot{x}_c+y\dot{y}) + c(x_c^2+y^2+2x_cy) +\\&\qquad+ d(\dot{x}_c+\dot{y}) + e(x_c+y) + f
+\end{split} \\
+\begin{split}
+&= (a\dot{x}_c^2+bx_c\dot{x}_c+cx_c^2+d\dot{x}_c+ex_c+f) + (a\dot{y}^2 + by\dot{y} + cy^2) + \\&\qquad + \dot{y} ( 2a\dot{x}_c + bx_c + d ) +y (b\dot{x}_c + 2cx_c + e) \end{split}\\
+&= L_c + (a\dot{y}^2 + by\dot{y} + cy^2) + \dot{y} \eval{\pdv{L}{\dot{x}}}_{x_c} + y \eval{\pdv{L}{x}}_{x_c}
+\end{align}
+and so
+\begin{align}
+K &= \int\DD{y} \exp( \frac{i}{\hbar}\int \dd{t} \left( L_c + (a\dot{y}^2 + by\dot{y} + cy^2) + \dot{y} \eval{\pdv{L}{\dot{x}}}_{x_c} + y \eval{\pdv{L}{x}}_{x_c} \right) )
+\end{align}
+Evaluating by parts the last part of the integral:
+\begin{align}
+I &= \int \dd{t} \left( \dot{y} \eval{\pdv{L}{\dot{x}}}_{x_c} + y \eval{\pdv{L}{x}}_{x_c} \right) \\
+&= \eval{y}_i^f \eval{\pdv{L}{\dot{x}}}_{x_c} + \int \dd{t} \left( -y \left( \eval{\dv{t}\pdv{L}{\dot{x}}}_{x_c} - \eval{\pdv{L}{x}}_{x_c} \right) \right)
+\end{align}
+that, by the equation of motion and the definition of $y$, is 0. Therefore,
+\begin{align}
+K &= e^{\frac{i}{\hbar} S_c }\int \DD{y} \exp( \frac{i}{\hbar} \int \dd{t} (a\dot{y}^2 + by\dot{y} + cy^2) )
+\end{align}
+Only the quadratic terms contribute to the propagator prefactor; the linear terms affect only the classical action computing.
+
+\section{Adding a source term to the action}
+\subsection{The free particle case}
+Let's suppose to have a free particle, and let's add a source term:
+\begin{equation}
+L = \frac{m}{2} \dot{x}^2 + Jx
+\end{equation}
+As showed for the quadratic Lagrangians, the source factor affect only the classic action term:
+\begin{equation}
+K =  e^{\frac{i}{\hbar} S_c }\int \DD{y} \exp( \frac{i}{\hbar} \int \dd{t} (\frac{m}{2}\dot{y}^2) )
+\end{equation}
+and, remembering the already computed path integral for free particle,
+\begin{equation}
+K = \sqrt{\frac{m}{2\pi i \hbar (t_f-t_i)}} e^{\frac{i}{\hbar} S_c }
+\end{equation}
+
+\subsection{Generic Lagrangian and functional derivatives}
+Let $L$ be a generic Lagrangian, and let's add a source term
+\begin{equation}
+L' = L + Jx
+\end{equation}
+where $J=J(t)$. Considering time and space quantized, the propagator is:
+\begin{equation}
+K = \int \dd{x_1}\dots\dd{x_n} \exp(\frac{i}{\hbar} \sum_i (L(\dot{x}_i,x_i) + J_i x_i) )
+\end{equation}
+Deriving $K$ by a generic $J_i$,
+\begin{equation}
+\pdv{K}{J_i} = \frac{i}{\hbar}\int \DD{x} x_i \exp( \frac{i}{\hbar} \sum_i (L(\dot{x}_i,x_i) + J_i x_i) ) 
+\end{equation}
+and going to the continuous limit,
+\begin{equation}
+\fdv{K[J]}{J(t^*)} = \frac{i}{\hbar}\int \DD{x} x(t^*) \exp(\frac{i}{\hbar} \int \dd{t} (L(\dot{x},x) + J x) )
+\end{equation}
+where $\fdv{K[J]}{J(t^*)}$ is the functional derivative.
+
+To find the meaning of this expression the path integral can be split in three integral, wrt the position at time $t^*$. Let $\DD{x_{i*}}$ be the differential on all the path from $x_i$ to $x^*$, and $\DD{x_{*f}}$ be the differential on all the path from $x^*$ to $x_f$. So:
+\begin{align}
+\fdv{K[J]}{J(t^*)} &= \frac{i}{\hbar}\int \DD{x} x(t^*) \exp(\frac{i}{\hbar} \int \dd{t} (L(\dot{x},x) + J x) ) \\
+				   &= \frac{i}{\hbar}\int \DD{x_{i*}} \dd{x^*} \DD{x_{*f}} x^* \exp(\frac{i}{\hbar} \left(\int_{t_i}^{t^*} + \int_{t^*}^{t_f} \right) \dd{t} (L(\dot{x},x) + J x) ) \\
+				   &= \frac{i}{\hbar}\int \dd{x^*} K(f,*) x^* K(*,i)
+\end{align}
+Remembering that $K(f,i) = \braket{x_f,t_f}{x_i,t_i}$:
+\begin{align}
+\fdv{K[J]}{J(t^*)} &= \frac{i}{\hbar}\int \dd{x^*} \braket{x_f,t_f}{x^*,t^*} x^* \braket{x^*,t^*}{x_i,t_i} \\
+	&= \frac{i}{\hbar}\int \dd{x^*} \mel{x_f}{e^{-\frac{i}{\hbar}H(t_f-t^*)}}{x^*} x^* \mel{x_*}{e^{-\frac{i}{\hbar}H(t^*-t_i)}}{x_i}
+\end{align}
+Therefore, having $\int \dd{x} \ket{x} x \bra{x} = \hat{x}$:
+\begin{align}
+\fdv{K[J]}{J(t^*)} &= \frac{i}{\hbar}\bra{x_f} e^{-\frac{i}{\hbar}H(t_f-t^*)} \hat{x}^* e^{-\frac{i}{\hbar}H(t^*-t_i)} \ket{x_i} \\
+	&= \frac{i}{\hbar}\bra{x_f,t_f} \hat{x}(t^*) \ket{x_i,t_i}
+\end{align}
+that means, the functional derivative allow us to compute the expectation value for $\hat{x}$ at a fixed time $t^*$.
+
+\subsection{Smart way to solve perturbed harmonic oscillator}
+Let's consider a perturbed harmonic oscillator:
+\begin{equation}
+L = \underbrace{\frac{m}{2}\dot{x}^2 + \frac{m}{2}\omega^2x^2}_{L_{HO}} - \lambda x^4
+\end{equation}
+
+To solve the path integral, let's add a source term to the Lagrangian and compute $K[J]$:
+\begin{align}
+K[J] &= \int \DD{x} \exp( \frac{i}{\hbar} \int \dd{t} (L_{HO} - \lambda x^4 + Jx ) ) \\
+&= \int \DD{x} \exp{ -\frac{i}{\hbar} \int \dd{t} \lambda x^4} \exp( \frac{i}{\hbar} \int \dd{t} (L_{HO} + Jx ) ) \\
+&= \int \DD{x} \sum_n \frac{1}{n!} \left( -\frac{i\lambda}{\hbar} \int \dd{t} x^4 \right)^n \exp( \frac{i}{\hbar} \int \dd{t} (L_{HO} + Jx ) ) \\
+&= \sum_n \frac{1}{n!} \left( -\frac{i\lambda}{\hbar} \right)^n \int \DD{x} \dd{t_1} \dots \dd{t_n} x_1^4 \dots x_n^4 \exp( \frac{i}{\hbar} \int \dd{t} (L_{HO} + Jx ) ) \\
+&= \sum_n \frac{1}{n!} \left( -\frac{i\lambda}{\hbar} \right)^n \frac{\hbar^4}{i^4}\fdv[4]{J_1}\dots\frac{\hbar^4}{i^4}\fdv[4]{J_n} \int \DD{x} \exp( \frac{i}{\hbar} \int \dd{t} (L_{HO} + Jx ) ) \label{eqn:halfpertho}
+\end{align}
+where when writing a product that involves a functional derivative the time integral is understood, i.e.
+\begin{equation}
+\pdv{F[J]}{J} y = \int \dd{t} \pdv{F[J]}{J(t)} y(t)
+\end{equation}
+In the equation \eqref{eqn:halfpertho} can be recognized the path integral for the un-perturbed harmonic oscillator:
+\begin{align}
+K[J] &= \sum_n \frac{1}{n!} \left( -i\lambda\hbar^3 \right)^n \fdv[4]{J_1}\dots\fdv[4]{J_n} K_{HO}[J]
+&= \exp( -i\lambda\hbar^3 \fdv[4]{J} ) K_{HO}[J]
+\end{align}
+
+Finally, to return to the initial problem without source term, is enough to compute everything in $J=0$:
+\begin{equation}
+K = \eval{ \exp( -i\lambda\hbar^3 \fdv[4]{J} ) K_{HO}[J] }_{J=0}
+\end{equation}
+
 \end{document}
