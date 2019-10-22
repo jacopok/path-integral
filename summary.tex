@@ -172,24 +172,69 @@ We can time-slice the interval between a certain time \(0 = t_0\) and another ti
 
 We call the time-slice \(\epsilon = t/N\). We will expand the in \(\epsilon \) up to first order the evolution operator \(\exp(H \epsilon /i \hbar) \).
 
-\dots
+The braket \(\braket{
+  x_{i+1}, t_{i+1}
+}{
+  x_{i}, t_{i}
+} \) can be written as 
 
-\todo[inline]{Fill there}
+Timeslicing \& introduction of the PI (JJJ)
 
-\subsection{Path integral of a quadratic Lagrangians}
+Trotter product formula (JJ)
+
+Classical path decomposition in the PI (JJ)
+
+Orders of magnitude (JJJ)
+
+Schrödinger equation from the PI (GIO)
+
+PI for quadratic Lagrangians (LEO)
+
+Math appendix: (complex) gaussian integrals (JJ)
+
+PI for the harmonic oscillator (GIO in caso)
+
+PI for general lagrangians (nonquadratic) ()
+
+Math appendix: functional derivatives (JJ)
+
+Semiclassical approximation (ALBE)
+
+Operator Matrix Elements (J)
+
+Adding a source term to the action (LEO)
+
+Application to the forced harmonic oscillator (LEO)
+
+Perturbation theory ()
+
+Imaginary time \& the Euclidean PI (ALE)
+
+Instantons (FRANCÉ)
+
+Kinks (J)
+
+\subsection{Path integral of a quadratic Lagrangian}
 
 Let \(L(x,\dot{x})\) be a quadratic Lagrangian:
 \begin{equation}
-	L = a\dot{x}^2 + bx\dot{x} + cx^2 + d\dot{x} + ex + f
+  L = a\dot{x}^2 + bx\dot{x} + cx^2 + d\dot{x} + ex + f
+  \,.
 \end{equation}
 
 The propagator for $L$, computed via path integral, is:
-\begin{align}
-K &= \int\DD{x} \exp(\frac{i}{\hbar}\int \dd{t} L) \\
-&= \int\DD{x} \exp(\frac{i}{\hbar}\int \dd{t} ( \underbrace{a\dot{x}^2 + bx\dot{x} + cx^2 + d\dot{x} + ex + f}_F) )
-\end{align}
+%
+\begin{subequations}
+  \begin{align}
+    K &= \int\DD{x} \exp(\frac{i}{\hbar}\int \dd{t} L) \\
+    &= \int\DD{x} \exp(\frac{i}{\hbar}\int \dd{t} ( \underbrace{a\dot{x}^2 + bx\dot{x} + cx^2 + d\dot{x} + ex + f}_F) )
+    \,.
+  \end{align}
+\end{subequations}
 
 Let $x_c$ be the classical path; let's write $x = x_c + y$ and therefore $\DD{x} = \DD{y}$. Properly replacing $x$ and $\dot{x}$, the propagator can be written as:
+%
+\begin{subequations}
 \begin{align}
 \begin{split}
 F &= a (\dot{x}_c^2+\dot{y}^2+2\dot{x}_c\dot{y}) + b(x_c\dot{x}_c+x_c\dot{y}+y\dot{x}_c+y\dot{y}) + c(x_c^2+y^2+2x_cy) +\\&\qquad+ d(\dot{x}_c+\dot{y}) + e(x_c+y) + f
@@ -197,12 +242,19 @@ F &= a (\dot{x}_c^2+\dot{y}^2+2\dot{x}_c\dot{y}) + b(x_c\dot{x}_c+x_c\dot{y}+y\d
 \begin{split}
 &= (a\dot{x}_c^2+bx_c\dot{x}_c+cx_c^2+d\dot{x}_c+ex_c+f) + (a\dot{y}^2 + by\dot{y} + cy^2) + \\&\qquad + \dot{y} ( 2a\dot{x}_c + bx_c + d ) +y (b\dot{x}_c + 2cx_c + e) \end{split}\\
 &= L_c + (a\dot{y}^2 + by\dot{y} + cy^2) + \dot{y} \eval{\pdv{L}{\dot{x}}}_{x_c} + y \eval{\pdv{L}{x}}_{x_c}
+\,,
 \end{align}
+\end{subequations}
+%
 and so
+%
 \begin{align}
 K &= \int\DD{y} \exp( \frac{i}{\hbar}\int \dd{t} \left( L_c + (a\dot{y}^2 + by\dot{y} + cy^2) + \dot{y} \eval{\pdv{L}{\dot{x}}}_{x_c} + y \eval{\pdv{L}{x}}_{x_c} \right) )
+\,.
 \end{align}
+
 Evaluating by parts the last part of the integral:
+%
 \begin{align}
 I &= \int \dd{t} \left( \dot{y} \eval{\pdv{L}{\dot{x}}}_{x_c} + y \eval{\pdv{L}{x}}_{x_c} \right) \\
 &= \eval{y}_i^f \eval{\pdv{L}{\dot{x}}}_{x_c} + \int \dd{t} \left( -y \left( \eval{\dv{t}\pdv{L}{\dot{x}}}_{x_c} - \eval{\pdv{L}{x}}_{x_c} \right) \right)
