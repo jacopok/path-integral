@@ -238,10 +238,27 @@ Then, using the fact that \(\braket{x}{p} = \exp(-xp/i\hbar) / \sqrt{2 \pi \hbar
   \exp(\frac{H \epsilon }{i \hbar}) \ket{x_i} =  \\
   &= \frac{1}{2 \pi \hbar} \int  \dd{p^{\prime }} 
   \exp(-\frac{\qty(x_{i+1}-x_{i})p^{\prime }}{i \hbar}) 
-  \exp(\frac{\epsilon }{i \hbar}\qty(\frac{p^{\prime 2}}{2m} - V(x_{i}))) 
+  \exp(\frac{\epsilon }{i \hbar}\qty(\frac{p^{\prime 2}}{2m} - V(x_{i})))  \\
+  &= \frac{1}{2 \pi \hbar}
+  \int  \dd{p^{\prime }} \exp(\frac{\epsilon}{i \hbar} \qty(H(p^{\prime}, x ) - \dot{x} p^{\prime }))
+  \,,
 \end{align}
-\,,
 \end{subequations}
+%
+and now we can complete the square: if we define the new variable \(\widetilde{p} = p^{\prime } - m \dot{x}\) we have \(\widetilde{p}^2/2m - m \dot{x}^2 /2 = p^{\prime 2} /2m - \dot{x} p^{\prime }\), therefore the integral becomes Gaussian in \(\widetilde{p}\): 
+%
+
+%
+\begin{subequations}
+\begin{align}
+  &\frac{1}{2 \pi \hbar} \int  \dd{\widetilde{p}} 
+  \exp(\frac{\epsilon}{i \hbar} \qty(\frac{\widetilde{p}^2 }{2m} - \frac{m \dot{x}^2}{2} + V(x))) =  \\
+  &= \frac{1}{2 \pi \hbar} \sqrt{\frac{2 \pi m \hbar }{i \epsilon }} \exp(- \epsilon  \frac{L(x, \dot{x})}{i \hbar}) 
+  \,,
+\end{align}
+\end{subequations}
+
+but 
 
 \subsection{Path integral of a quadratic Lagrangian}
 
