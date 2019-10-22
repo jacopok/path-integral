@@ -172,47 +172,76 @@ We can time-slice the interval between a certain time \(0 = t_0\) and another ti
 
 We call the time-slice \(\epsilon = t/N\). We will expand the in \(\epsilon \) up to first order the evolution operator \(\exp(H \epsilon /i \hbar) \).
 
-The braket \(\braket{
-  x_{i+1}, t_{i+1}
-}{
-  x_{i}, t_{i}
-} \) can be written as 
+The braket \(\braket{x_{i+1}, t_{i+1}}{x_{i}, t_{i}} \), if we assume \(t_{i+1} - t_i = \epsilon \), can be written as 
+%
+\begin{equation}
+  \bra{x_{i+1}} \exp(\frac{H \epsilon }{i \hbar}) \ket{x_i}
+\,.
+\end{equation}
 
-Timeslicing \& introduction of the PI (JJJ)
+The first case we consider is a free particle Hamiltonian, \(X = p^2/2m + V(x)\); we insert a momentum completeness 
+%
+\begin{equation}
+  \bra{x_{i+1}} \exp(\frac{H \epsilon }{i \hbar}) \ket{x_i}
+  = \int  \dd{p'} \braket{x_{i+1}}{p'} \bra{p'} 
+  \exp(\frac{H \epsilon }{i \hbar}) \ket{x_i}   
+\,,
+\end{equation}
+%
+and now make a 
 
-Trotter product formula (JJ)
+\begin{claim}
+\begin{equation}
+  \bra{p'} 
+  \exp(\frac{H \epsilon }{i \hbar}) \ket{x_i}
+  = \exp(\frac{\epsilon }{i \hbar} \qty(p^{\prime 2}/2m + v(x_{i}))) + O(\epsilon^{3/2})
+\,.
+\end{equation}
+\end{claim}
 
-Classical path decomposition in the PI (JJ)
+\begin{proof}
+  We rewrite the expression as 
+  %
+  \begin{equation}
+    \bra{p^{\prime }} \exp(\epsilon (T+U)) \ket{x}  
+  \,,
+  \end{equation}
+  %
+  where \(T = \frac{p^2/2m}{ i \hbar} \), \(U = \frac{V}{i \hbar}\).
+  If we multiply and divide by \(e^{\epsilon U}\) (respectively \(T\)) we get that proving our identity is equivalent to proving that: 
+  %
+  \begin{equation}
+    \bra{p} \exp(-\epsilon T) \exp(\epsilon H / i \hbar) \exp(-\epsilon U) \ket{x}  = \braket{p'}{x} 
+  \,,
+  \end{equation}
+  %
+  and we call the product of exponentials \(\exp(-\epsilon^2 C) \).
 
-Orders of magnitude (JJJ)
+  The CBH formula yields a solution \(C\) to the equation \(e^{C}= e^{A}e^{B}\) in terms of commutators of \(A\) and \(B\).
+  With it, we arrive at:  
+  %
+  \begin{equation}
+    \exp(-\epsilon^2 C) = \exp(- \frac{\epsilon^2}{2} [T, U] + O(\epsilon^3)) 
+  \,,
+  \end{equation}
+  %
+  \dots
+\end{proof}
 
-Schrödinger equation from the PI (GIO)
+Then, using the fact that \(\braket{x}{p} = \exp(-xp/i\hbar) / \sqrt{2 \pi \hbar} \), we get: 
 
-PI for quadratic Lagrangians (LEO)
 
-Math appendix: (complex) gaussian integrals (JJ)
-
-PI for the harmonic oscillator (GIO in caso)
-
-PI for general lagrangians (nonquadratic) ()
-
-Math appendix: functional derivatives (JJ)
-
-Semiclassical approximation (ALBE)
-
-Operator Matrix Elements (J)
-
-Adding a source term to the action (LEO)
-
-Application to the forced harmonic oscillator (LEO)
-
-Perturbation theory ()
-
-Imaginary time \& the Euclidean PI (ALE)
-
-Instantons (FRANCÉ)
-
-Kinks (J)
+%
+\begin{subequations}
+\begin{align}
+  &\int  \dd{p'} \braket{x_{i+1}}{p'} \bra{p'} 
+  \exp(\frac{H \epsilon }{i \hbar}) \ket{x_i} =  \\
+  &= \frac{1}{2 \pi \hbar} \int  \dd{p^{\prime }} 
+  \exp(-\frac{\qty(x_{i+1}-x_{i})p^{\prime }}{i \hbar}) 
+  \exp(\frac{\epsilon }{i \hbar}\qty(\frac{p^{\prime 2}}{2m} - V(x_{i}))) 
+\end{align}
+\,,
+\end{subequations}
 
 \subsection{Path integral of a quadratic Lagrangian}
 
@@ -346,4 +375,43 @@ Finally, to return to the initial problem without source term, is enough to comp
 K = \eval{ \exp( -i\lambda\hbar^3 \fdv[4]{J} ) K_{HO}[J] }_{J=0}
 \end{equation}
 
+% Timeslicing \& introduction of the PI (JJJ)
+
+% Trotter product formula (JJ)
+
+% Classical path decomposition in the PI (JJ)
+
+% Orders of magnitude (JJJ)
+
+% Schrödinger equation from the PI (GIO)
+
+% PI for quadratic Lagrangians (LEO)
+
+% Math appendix: (complex) gaussian integrals (JJ)
+
+% PI for the harmonic oscillator (GIO in caso)
+
+% PI for general lagrangians (nonquadratic) ()
+
+% Math appendix: functional derivatives (JJ)
+
+% Semiclassical approximation (ALBE)
+
+% Operator Matrix Elements (J)
+
+% Adding a source term to the action (LEO)
+
+% Application to the forced harmonic oscillator (LEO)
+
+% Perturbation theory ()
+
+% Imaginary time \& the Euclidean PI (ALE)
+
+% Instantons (FRANCÉ)
+
+% Kinks (J)
+
+
+
 \end{document}
+
