@@ -225,7 +225,13 @@ and now make a
   \,,
   \end{equation}
   %
-  \dots
+  but the term \([T, U]\) is not of constant order with respect to \(\epsilon \): the range of \(p\) which must be considered when integrating is of the order \(\epsilon^{-1/2}\), and \([T, U] \sim p\). So the term is actually of order \(\exp(-\epsilon^{3/2}) \). When raising it to the power \(N \sim 1/ \epsilon \) we get 
+  %
+  \begin{equation}
+    \qty(1 + \epsilon^{3/2})^{1/\epsilon } \sim 1 
+  \,,
+  \end{equation}
+  %
 \end{proof}
 
 Then, using the fact that \(\braket{x}{p} = \exp(-xp/i\hbar) / \sqrt{2 \pi \hbar} \), we get: 
@@ -245,7 +251,7 @@ Then, using the fact that \(\braket{x}{p} = \exp(-xp/i\hbar) / \sqrt{2 \pi \hbar
 \end{align}
 \end{subequations}
 %
-and now we can complete the square: if we define the new variable \(\widetilde{p} = p^{\prime } - m \dot{x}\) we have \(\widetilde{p}^2/2m - m \dot{x}^2 /2 = p^{\prime 2} /2m - \dot{x} p^{\prime }\), therefore the integral becomes Gaussian in \(\widetilde{p}\): 
+and now we can define the new variable \(\widetilde{p} = p^{\prime } - m \dot{x}\) we have \(\widetilde{p}^2/2m - m \dot{x}^2 /2 = p^{\prime 2} /2m - \dot{x} p^{\prime }\), therefore the integral becomes Gaussian in \(\widetilde{p}\): 
 %
 
 %
@@ -253,7 +259,8 @@ and now we can complete the square: if we define the new variable \(\widetilde{p
 \begin{align}
   &\frac{1}{2 \pi \hbar} \int  \dd{\widetilde{p}} 
   \exp(\frac{\epsilon}{i \hbar} \qty(\frac{\widetilde{p}^2 }{2m} - \frac{m \dot{x}^2}{2} + V(x))) =  \\
-  &= \frac{1}{2 \pi \hbar} \sqrt{\frac{2 \pi m \hbar }{i \epsilon }} \exp(- \epsilon  \frac{L(x, \dot{x})}{i \hbar}) 
+  &= \frac{1}{2 \pi \hbar} \sqrt{\frac{2 \pi m \hbar }{i \epsilon }} \exp(- \epsilon  \frac{L(x, \dot{x})}{i \hbar}) \\
+  &=  \sqrt{\frac{ m  }{2 \pi i \hbar \epsilon }} \exp(- \epsilon  \frac{L(x, \dot{x})}{i \hbar}) = \braket{x_{i+1}, t_{i+1}}{x_{i}, t_{i}}
   \,,
 \end{align}
 \end{subequations}
